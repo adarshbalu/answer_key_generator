@@ -43,4 +43,8 @@ class AnswerListProvider extends ChangeNotifier {
       }
     });
   }
+
+  Map<String, dynamic> convertToJSON() {
+    return {'answer_key': answerKeys.map((e) => e.toJSON())};
+  }
 }
