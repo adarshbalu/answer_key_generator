@@ -132,11 +132,17 @@ class _EditAnswerKeyState extends State<EditAnswerKey> {
                   style: ButtonStyle(),
                   onPressed: () {
                     if (key.currentState.validate()) {
-                      context.read<AnswerListProvider>().addAnswerKey(
+                      if (context.read<AnswerListProvider>().addAnswerKey(
                           answer: answer.text,
                           questionNumber: int.parse(number.text),
-                          marks: int.parse(mark.text));
-                      Navigator.pop(context);
+                          marks: int.parse(mark.text))) {
+                        Navigator.pop(context);
+                      } else
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: const Text(
+                              'Answer for the same question already added'),
+                          duration: const Duration(seconds: 5),
+                        ));
                     }
                   }),
             ],

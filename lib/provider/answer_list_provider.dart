@@ -4,13 +4,21 @@ import 'package:flutter/cupertino.dart';
 class AnswerListProvider extends ChangeNotifier {
   List<Answer> answerKeys = <Answer>[];
 
-  void addAnswerKey(
+  bool addAnswerKey(
       {@required String answer,
       @required int questionNumber,
       @required int marks}) {
-    answerKeys.add(
-        Answer(questionNumber: questionNumber, marks: marks, answer: answer));
-    notifyListeners();
+    bool isFound = false;
+    answerKeys.forEach((element) {
+      if (element.questionNumber == questionNumber) isFound = true;
+    });
+    if (!isFound) {
+      answerKeys.add(
+          Answer(questionNumber: questionNumber, marks: marks, answer: answer));
+      notifyListeners();
+      return true;
+    } else
+      return false;
   }
 
   void removeAnswerKey(int questionNumber) {
