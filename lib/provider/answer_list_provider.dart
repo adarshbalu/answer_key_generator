@@ -2,7 +2,7 @@ import 'package:answer_key_generator/models/answer.dart';
 import 'package:flutter/cupertino.dart';
 
 class AnswerListProvider extends ChangeNotifier {
-  List<Answer> answerKeys = [];
+  List<Answer> answerKeys = <Answer>[];
 
   void addAnswerKey(
       {@required String answer,
@@ -10,7 +10,6 @@ class AnswerListProvider extends ChangeNotifier {
       @required int marks}) {
     answerKeys.add(
         Answer(questionNumber: questionNumber, marks: marks, answer: answer));
-
     notifyListeners();
   }
 

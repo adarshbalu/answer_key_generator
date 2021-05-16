@@ -10,14 +10,16 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Answer key Generator',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => AnswerListProvider())],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Answer key Generator',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: HomePage(),
       ),
-      home: MultiProvider(providers: [
-        ChangeNotifierProvider(create: (_) => AnswerListProvider())
-      ], child: HomePage()),
     );
   }
 }
