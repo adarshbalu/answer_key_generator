@@ -12,4 +12,12 @@ class Answer {
           questionNumber != null,
           answer != null,
         );
+
+  Map<String, dynamic> toJSON() {
+    return {
+      'answer': answer,
+      'marks': marks,
+      'question_number': questionNumber
+    };
+  }
 }
