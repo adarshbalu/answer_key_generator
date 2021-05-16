@@ -76,10 +76,14 @@ class _EditAnswerKeyState extends State<EditAnswerKey> {
                         FilteringTextInputFormatter.digitsOnly
                       ],
                       validator: (v) {
-                        if (v == null || int.tryParse(v) <= 0)
-                          return 'Add question number';
-                        else
-                          return null;
+                        try {
+                          if (v == null || int.tryParse(v) <= 0)
+                            return 'Add question number';
+                          else
+                            return null;
+                        } catch (e) {
+                          return 'Wrong input';
+                        }
                       },
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
@@ -101,10 +105,14 @@ class _EditAnswerKeyState extends State<EditAnswerKey> {
                         FilteringTextInputFormatter.digitsOnly
                       ],
                       validator: (v) {
-                        if (v == null || int.tryParse(v) <= 0)
-                          return 'Add marks';
-                        else
-                          return null;
+                        try {
+                          if (v == null || int.tryParse(v) <= 0)
+                            return 'Add marks';
+                          else
+                            return null;
+                        } catch (e) {
+                          return 'Wrong input';
+                        }
                       },
                       decoration: InputDecoration(
                           border: OutlineInputBorder(),
