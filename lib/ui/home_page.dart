@@ -1,3 +1,5 @@
+import 'package:answer_key_generator/models/answer.dart';
+import 'package:answer_key_generator/ui/edit_answer_key.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,16 +15,23 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Answer key Generator'),
+        centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
         child: Text('+'),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (_) => EditAnswerKey(
+                        answer: Answer(marks: 0, questionNumber: 0, answer: ''),
+                      )));
+        },
       ),
       body: Container(
+        margin: EdgeInsets.all(16),
         child: Column(
-          children: [
-            Text('Add Answer key data'),
-          ],
+          children: [],
         ),
       ),
     );

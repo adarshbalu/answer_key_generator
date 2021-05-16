@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 
 class Answer {
-  String answer;
-  int questionNumber, marks = 0;
+  String answer = '';
+  int questionNumber = 0, marks = 0;
 
   Answer(
       {@required this.answer,
