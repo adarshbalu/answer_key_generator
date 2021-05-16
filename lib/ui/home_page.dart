@@ -1,6 +1,7 @@
 import 'package:answer_key_generator/models/answer.dart';
 import 'package:answer_key_generator/provider/answer_list_provider.dart';
 import 'package:answer_key_generator/ui/edit_answer_key.dart';
+import 'package:answer_key_generator/utils/json_convertor.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -23,7 +24,15 @@ class _HomePageState extends State<HomePage> {
         centerTitle: false,
         actions: [
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              if (context.read<AnswerListProvider>().answerKeys.isNotEmpty)
+                writeFile(context.read<AnswerListProvider>().toJson());
+              else
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: const Text('Please add answers to continue'),
+                  duration: const Duration(seconds: 5),
+                ));
+            },
             child: Icon(Icons.done),
           ),
         ],

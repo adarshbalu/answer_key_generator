@@ -43,7 +43,7 @@ class AnswerListProvider extends ChangeNotifier {
     });
   }
 
-  Map<String, dynamic> convertToJSON() {
-    return {'answer_key': answerKeys.map((e) => e.toJSON())};
-  }
+  Map<String, dynamic> toJson() => {
+        "answer_key": List<dynamic>.from(answerKeys.map((x) => x.toJSON())),
+      };
 }
