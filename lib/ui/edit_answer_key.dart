@@ -48,7 +48,6 @@ class _EditAnswerKeyState extends State<EditAnswerKey> {
             children: [
               TextFormField(
                 controller: answer,
-                maxLength: 10,
                 maxLines: 10,
                 validator: (v) {
                   if (v == null || v.isEmpty)
@@ -71,6 +70,7 @@ class _EditAnswerKeyState extends State<EditAnswerKey> {
                 children: [
                   Expanded(
                     child: TextFormField(
+                      maxLength: 3,
                       controller: number,
                       inputFormatters: <TextInputFormatter>[
                         FilteringTextInputFormatter.digitsOnly
@@ -99,6 +99,7 @@ class _EditAnswerKeyState extends State<EditAnswerKey> {
                   ),
                   Expanded(
                     child: TextFormField(
+                      maxLength: 3,
                       controller: mark,
                       keyboardType: TextInputType.number,
                       inputFormatters: <TextInputFormatter>[
